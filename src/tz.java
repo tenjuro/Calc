@@ -72,9 +72,14 @@ public class tz {
                 result = input.split("-");
                 rim(result);
                 if (Integer.parseInt(result[0]) <=10 && Integer.parseInt(result[0]) > 0 && Integer.parseInt(result[1]) <= 10 && Integer.parseInt(result[1]) > 0){
-                    a = Math.abs(Integer.parseInt(result[0]) - Integer.parseInt(result[1]));
-                    input = Integer.toString(a);
-                    input = arab(input);
+                    a = Integer.parseInt(result[0]) - Integer.parseInt(result[1]);
+                    if (a > 0){
+                        input = Integer.toString(a);
+                        input = arab(input);
+                    } else {
+                        // System.out.println("Результат вычисления римских цифр меньше 1");
+                        throw new ExceptionCalc("Результат вычисления римских цифр меньше или равен нулю");
+                    }
                 } else {
                     throw new IOException("Введенные значения больше 10 или меньше 1");
                 }
@@ -98,7 +103,7 @@ public class tz {
                         input = arab(input);
                     } else {
                         // System.out.println("Результат вычисления римских цифр меньше 1");
-                        throw new ExceptionCalc("Результат вычисления римских цифр 0 или меньше нуля");
+                        throw new ExceptionCalc("Результат вычисления римских цифр меньше 1");
                     }
                 } else {
                     throw new IOException("Введенные значения больше 10 или меньше 1");
